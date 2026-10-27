@@ -1,4 +1,4 @@
-# mwz
+# mwm
 
 Automação, integrações e IA aplicada a rotinas contábeis e fiscais.
 **Menos trabalho manual. Mais controle da operação.**
@@ -15,18 +15,24 @@ Portfólio: **[savez-portfolio.vercel.app](https://savez-portfolio.vercel.app)**
 
 Plataforma web que controla as obrigações fiscais de um escritório contábil e **dá baixa sozinha** ao ler
 os documentos da equipe. Um agente reconhece cada arquivo pelo conteúdo (declaração, recibo, apuração,
-guia, XML de nota) e o painel o amarra à obrigação certa, cruzando o que foi **declarado**, o que foi
-**apurado** e o que foi **recolhido**.
+guia, comprovante), e o painel o amarra à obrigação certa e confere o que foi **apurado**, **declarado**,
+**cobrado em guia** e **pago**. Em produção desde agosto de 2026; a equipe usa desde 22/10/2026.
 
-- **545 empresas**, **45 obrigações** e **~30 mil competências** controladas num lugar só
-- **34 mil documentos** lidos e classificados sem digitação por **15 leitores** de documento fiscal
+Números de 26/10/2026:
+
+- **534 empresas ativas**, **45 obrigações** e **cerca de 4.000 competências por mês** num lugar só
+- **106.709 arquivos** lidos sem digitação por **22 leitores** de documento fiscal
   (DCTFWeb, eSocial, Reinf, SPED, GIA, PGDAS-D, apurações, PER/DCOMP…)
-- **606 mil XML** de notas indexados e o ISS retido conferido nota a nota
-- Integração com a API do eContador (Alterdata), com a Receita e com a Sefaz RS
-- Cadastro de empresa nova automatizado: a empresa aparece no sistema contábil, a ficha abre sozinha,
-  robôs consultam inscrição estadual e Simples Nacional, e a gerente aprova com a prova na tela
-- Atrasadas de um mês **de 527 para 261** ao decidir as guias sindicais pela folha de pagamento
-- **~1.250 testes automatizados** e trilha de auditoria de cada mudança
+- **99,9%** dos vencimentos de 09/2026 entregues
+- **85,6%** das competências de 09/2026 conformes na conferência entre apurado, declarado e pago
+- **606.271 XML** de notas indexados (15/09/2026), e o ISS retido decidido pelas notas de cada mês
+- Integração com a API do eContador (Alterdata): o que foi publicado e o que o cliente ainda não abriu
+- Cadastro de empresa nova automatizado: a empresa aparece no eContador e a ficha abre sozinha; robôs
+  consultam inscrição estadual e Simples Nacional, e a gerência aprova com a prova na tela
+- Atrasadas de 08/2026 **de 527 para 261** com as guias sindicais decididas pela folha de pagamento
+- **1.773 testes automatizados** e trilha de auditoria de cada mudança
+
+Desenvolvimento assistido por IA (Claude Code e ChatGPT), com especificação, revisão e validação próprias.
 
 `Next.js` `React` `TypeScript` `Prisma` `PostgreSQL` `Node.js` `SQLite` `Python` `Playwright` `Vercel`
 
@@ -44,7 +50,8 @@ de clientes.
 | **Faturamento consolidado** | Lê apurações, balancetes e DRE de layouts suportados e organiza o faturamento por competência, consolidando matriz e filiais e apontando divergência entre apuração e contabilidade | Python |
 | **SPED Fiscal** | Cálculo do DIFAL e dos ajustes E111/E113 | Python |
 | **Ressarcimento de IPI** | Gera os arquivos R11 e R12 para importação no PER/DCOMP Web | Python |
-| **Dissídio no Alterdata** | Recalcula o reajuste e gera o arquivo de importação do dissídio | Python |
+| **Reajuste de Dissídio** | Calcula o novo salário de cada funcionário pelas regras da convenção coletiva e gera, por empresa, a planilha do cliente, pronta para o cálculo do retroativo | Python |
+| **Retroativo do dissídio** | Calcula o retroativo a partir da planilha do reajuste e gera o arquivo de importação da folha no Alterdata | Python |
 | **Folha → contabilidade** | Integra os relatórios de folha do Alterdata ao arquivo de importação contábil do Infor | Python |
 
 ---
