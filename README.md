@@ -16,7 +16,8 @@ Portfólio: **[savez-portfolio.vercel.app](https://savez-portfolio.vercel.app)**
 Plataforma web que controla as obrigações fiscais de um escritório contábil e **dá baixa sozinha** ao ler
 os documentos da equipe. Um agente reconhece cada arquivo pelo conteúdo (declaração, recibo, apuração,
 guia, comprovante), e o painel o amarra à obrigação certa e confere o que foi **apurado**, **declarado**,
-**cobrado em guia** e **pago**. Em produção desde agosto de 2026; a equipe usa desde 22/10/2026.
+**cobrado em guia** e **pago**. Em produção desde agosto de 2026; homologado pela gestão em 16/10/2026 e
+usado pela equipe desde 22/10/2026.
 
 Números de 26/10/2026:
 
@@ -29,12 +30,30 @@ Números de 26/10/2026:
 - Integração com a API do eContador (Alterdata): o que foi publicado e o que o cliente ainda não abriu
 - Cadastro de empresa nova automatizado: a empresa aparece no eContador e a ficha abre sozinha; robôs
   consultam inscrição estadual e Simples Nacional, e a gerência aprova com a prova na tela
-- Atrasadas de 08/2026 **de 527 para 261** com as guias sindicais decididas pela folha de pagamento
 - **1.773 testes automatizados** e trilha de auditoria de cada mudança
 
 Desenvolvimento assistido por IA (Claude Code e ChatGPT), com especificação, revisão e validação próprias.
 
-`Next.js` `React` `TypeScript` `Prisma` `PostgreSQL` `Node.js` `SQLite` `Python` `Playwright` `Vercel`
+`Next.js` `React` `TypeScript` `Prisma` `PostgreSQL` `Node.js` `SQLite` `pdf.js` `Python` `Playwright` `Vercel`
+
+---
+
+## Central de automação: obrigações fiscais, trabalhistas e contábeis
+
+Aplicativo Windows que reúne as rotinas em lote de um escritório contábil em **15 automações em 13 portais
+e sistemas** (e-CAC, PGFN, Caixa, Alterdata, eContador, prefeitura e outros): transmissão da DCTFWeb com
+importação do MIT, guias de parcelamento (Receita Federal e PGFN), consultas ao Simples Nacional e à
+inscrição estadual, relatórios de folha e fichas no Alterdata, procurações e extratos do FGTS, DMS da
+prefeitura, comprovantes e situação fiscal do eContador, SPED e apurações sem movimento. As rotinas rodam
+por agenda, uma por vez, a partir das planilhas de controle dos setores; cada robô é conferido por SHA-256
+antes de rodar, repetir não duplica emissão e o resultado de cada empresa fica registrado, com aviso por
+e-mail. Onde o portal exige verificação contra robôs, como o login do gov.br, quem entra é uma pessoa.
+
+Números de 26/10/2026: **9.208 processos** e **12.428 documentos** registrados desde 09/2026; conferência
+dos certificados no Conectividade Social de **198 min para 25 s**; leitura dos pagamentos no eContador de
+**77 para 4 páginas**; **84.801 linhas de código**, 20.535 delas de testes.
+
+`C# (.NET)` `Python` `Node.js` `Playwright` `PowerShell` `.NET 10 (FlaUI)` `UI Automation` `APIs Google` `OCR`
 
 ---
 
@@ -45,13 +64,14 @@ de clientes.
 
 | Projeto | O que resolve | Stack |
 |---|---|---|
-| **Central e-CAC** | Rotinas em lote nos portais a partir de uma lista única de empresas: DCTFWeb com importação do MIT, transmissão e download dos documentos; emissão das guias de parcelamento do Simples Nacional, da Receita Federal e da PGFN; consultas ao Simples Nacional/SIMEI e à inscrição estadual no RS, com comprovante em PDF e JSON por empresa. Passa pelos CAPTCHAs dos portais de forma automática | JavaScript · Python · automação de navegador |
-| **Apurações sem movimento** | Cruza a relação de empresas com os documentos de conferência antes de gerar as apurações de ICMS, ISSQN e PIS/COFINS sem movimento. Empresa com pendência é bloqueada com o motivo; arquivo existente nunca é sobrescrito | Python |
-| **Faturamento consolidado** | Lê apurações, balancetes e DRE de layouts suportados e organiza o faturamento por competência, consolidando matriz e filiais e apontando divergência entre apuração e contabilidade | Python |
+| **Apurações sem movimento** | Cruza a relação de empresas com os documentos de conferência antes de gerar as apurações de ICMS, ISSQN e PIS/COFINS sem movimento. Empresa com pendência é bloqueada com o motivo; arquivo existente nunca é sobrescrito. Desde 10/2026, também roda integrado à central de automação | Python |
+| **Faturamento consolidado** | Calcula o faturamento de até 12 competências a partir das apurações de vários sistemas (Alterdata, Sistema JB, PROMOB e outros), consolida matriz e filiais, confere com o balancete e a DRE e gera o demonstrativo em PDF assinado pelo responsável legal, arquivando os documentos usados e enviando tudo por e-mail à contabilidade | Python |
+| **Gestão de Extratos Bancários** | Lê a caixa de e-mail central, reconhece os extratos pelo conteúdo, identifica banco, conta, titular e competência, confronta a empresa com o cadastro do mês e arquiva o PDF na rede com nome padronizado, conferindo a cópia por hash e recibo assinado antes de retirar o original do Drive. Separa o documento guardado do pedido do cliente, que fica pendente até alguém responder. Em operação desde 09/2026 | Google Apps Script · Node.js · PowerShell · APIs Google · OCR |
 | **SPED Fiscal** | Cálculo do DIFAL e dos ajustes E111/E113 | Python |
 | **Ressarcimento de IPI** | Gera os arquivos R11 e R12 para importação no PER/DCOMP Web | Python |
-| **Reajuste de Dissídio** | Calcula o novo salário de cada funcionário pelas regras da convenção coletiva e gera, por empresa, a planilha do cliente, pronta para o cálculo do retroativo | Python |
+| **Reajuste de Dissídio** | Calcula o dissídio de cada funcionário pelas regras de 8 convenções coletivas (proporcionalidade, piso, teto, horistas e compensação de aumentos lida do PDF de alterações salariais), com conferência antes de gerar, e entrega a planilha do cliente pronta para o retroativo. Em produção desde 07/2026: 670 funcionários de 45 empresas até 19/10/2026 e 55 testes automatizados | Python · tkinter · openpyxl · pdfplumber |
 | **Retroativo do dissídio** | Calcula o retroativo a partir da planilha do reajuste e gera o arquivo de importação da folha no Alterdata | Python |
+| **Gerador Alterdata (importação do ponto)** | Transforma as planilhas de lançamentos e os espelhos de ponto em PDF dos clientes no TXT de importação do Alterdata, confere código e nome de cada funcionário, memoriza os códigos confirmados e bloqueia formatos ambíguos. Em uso pelo Departamento Pessoal desde 09/2026 | Python · tkinter · SQLite · PyMuPDF |
 | **Folha → contabilidade** | Integra os relatórios de folha do Alterdata ao arquivo de importação contábil do Infor | Python |
 
 ---
@@ -71,11 +91,11 @@ de clientes.
 
 ## Tecnologias
 
-**Linguagens** · TypeScript · JavaScript · Python · SQL · PowerShell<br>
+**Linguagens** · TypeScript · JavaScript · Python · C# · SQL · PowerShell<br>
 **Web** · Next.js · React · Tailwind CSS · APIs REST<br>
 **Dados** · PostgreSQL · Prisma · SQLite · Excel<br>
-**Automação e documentos** · Node.js · Playwright · pdf.js · OCR · XML<br>
-**Entrega** · Git · GitHub · Vercel · Docker · Agendador de Tarefas do Windows
+**Automação e documentos** · Node.js · Playwright · pdf.js · Google Apps Script · OCR · XML<br>
+**Entrega** · Git · GitHub · Vercel · Agendador de Tarefas do Windows
 
 ---
 
