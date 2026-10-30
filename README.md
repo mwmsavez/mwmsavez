@@ -19,18 +19,18 @@ guia, comprovante), e o painel o amarra à obrigação certa e confere o que foi
 **cobrado em guia** e **pago**. Em produção desde agosto de 2026; homologado pela gestão em 16/10/2026 e
 usado pela equipe desde 22/10/2026.
 
-Números de 26/10/2026:
+Números de 30/10/2026:
 
 - **534 empresas ativas**, **45 obrigações** e **cerca de 4.000 competências por mês** num lugar só
-- **106.709 arquivos** lidos sem digitação por **22 leitores** de documento fiscal
+- **106.709 arquivos** lidos sem digitação por **22 leitores** de documento fiscal (26/10/2026)
   (DCTFWeb, eSocial, Reinf, SPED, GIA, PGDAS-D, apurações, PER/DCOMP…)
-- **99,9%** dos vencimentos de 09/2026 entregues
-- **85,6%** das competências de 09/2026 conformes na conferência entre apurado, declarado e pago
+- **100%** dos vencimentos de 09/2026 entregues no fechamento do mês
+- **84,9%** das 1.209 competências de 09/2026 comparadas conformes na conferência entre apurado, declarado e pago
 - **606.271 XML** de notas indexados (15/09/2026), e o ISS retido decidido pelas notas de cada mês
 - Integração com a API do eContador (Alterdata): o que foi publicado e o que o cliente ainda não abriu
 - Cadastro de empresa nova automatizado: a empresa aparece no eContador e a ficha abre sozinha; robôs
   consultam inscrição estadual e Simples Nacional, e a gerência aprova com a prova na tela
-- **1.773 testes automatizados** e trilha de auditoria de cada mudança
+- **1.912 testes automatizados** e trilha de auditoria de cada mudança
 
 Desenvolvimento assistido por IA (Claude Code e ChatGPT), com especificação, revisão e validação próprias.
 
@@ -40,7 +40,7 @@ Desenvolvimento assistido por IA (Claude Code e ChatGPT), com especificação, r
 
 ## Central de automação: obrigações fiscais, trabalhistas e contábeis
 
-Aplicativo Windows que reúne as rotinas em lote de um escritório contábil em **15 automações em 13 portais
+Aplicativo Windows que reúne as rotinas em lote de um escritório contábil em **16 automações em 13 portais
 e sistemas** (e-CAC, PGFN, Caixa, Alterdata, eContador, prefeitura e outros): transmissão da DCTFWeb com
 importação do MIT, guias de parcelamento (Receita Federal e PGFN), consultas ao Simples Nacional e à
 inscrição estadual, relatórios de folha e fichas no Alterdata, procurações e extratos do FGTS, DMS da
@@ -49,9 +49,9 @@ por agenda, uma por vez, a partir das planilhas de controle dos setores; cada ro
 antes de rodar, repetir não duplica emissão e o resultado de cada empresa fica registrado, com aviso por
 e-mail. Onde o portal exige verificação contra robôs, como o login do gov.br, quem entra é uma pessoa.
 
-Números de 26/10/2026: **9.208 processos** e **12.428 documentos** registrados desde 09/2026; conferência
+Números de 29/10/2026: **9.693 processos** e **13.947 documentos** registrados desde 09/2026; conferência
 dos certificados no Conectividade Social de **198 min para 25 s**; leitura dos pagamentos no eContador de
-**77 para 4 páginas**; **84.801 linhas de código**, 20.535 delas de testes.
+**77 para 4 páginas**; **84.801 linhas de código**, 20.535 delas de testes (26/10/2026).
 
 `C# (.NET)` `Python` `Node.js` `Playwright` `PowerShell` `.NET 10 (FlaUI)` `UI Automation` `APIs Google` `OCR`
 
