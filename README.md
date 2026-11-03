@@ -19,13 +19,13 @@ guia, comprovante), e o painel o amarra à obrigação certa e confere o que foi
 **cobrado em guia** e **pago**. Em produção desde agosto de 2026; homologado pela gestão em 16/10/2026 e
 usado pela equipe desde 22/10/2026.
 
-Números de 30/10/2026:
+Números de 03/11/2026:
 
 - **534 empresas ativas**, **45 obrigações** e **cerca de 4.000 competências por mês** num lugar só
 - **106.709 arquivos** lidos sem digitação por **22 leitores** de documento fiscal (26/10/2026)
   (DCTFWeb, eSocial, Reinf, SPED, GIA, PGDAS-D, apurações, PER/DCOMP…)
-- **100%** dos vencimentos de 09/2026 entregues no fechamento do mês
-- **84,9%** das 1.209 competências de 09/2026 comparadas conformes na conferência entre apurado, declarado e pago
+- **100%** dos vencimentos de 09/2026 entregues no fechamento do mês; **98,0%** em 10/2026
+- **86,0%** das 1.198 competências de 09/2026 comparadas conformes na conferência entre apurado, declarado e pago
 - **606.271 XML** de notas indexados (15/09/2026), e o ISS retido decidido pelas notas de cada mês
 - Integração com a API do eContador (Alterdata): o que foi publicado e o que o cliente ainda não abriu
 - Cadastro de empresa nova automatizado: a empresa aparece no eContador e a ficha abre sozinha; robôs
