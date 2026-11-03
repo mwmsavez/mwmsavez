@@ -49,7 +49,7 @@ por agenda, uma por vez, a partir das planilhas de controle dos setores; cada ro
 antes de rodar, repetir não duplica emissão e o resultado de cada empresa fica registrado, com aviso por
 e-mail. Onde o portal exige verificação contra robôs, como o login do gov.br, quem entra é uma pessoa.
 
-Números de 29/10/2026: **9.693 processos** e **13.947 documentos** registrados desde 09/2026; conferência
+Números de 03/11/2026: **10.295 processos** e **15.064 documentos** registrados desde 09/2026; conferência
 dos certificados no Conectividade Social de **198 min para 25 s**; leitura dos pagamentos no eContador de
 **77 para 4 páginas**; **84.801 linhas de código**, 20.535 delas de testes (26/10/2026).
 
