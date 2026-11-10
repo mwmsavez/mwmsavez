@@ -1,7 +1,6 @@
 # mwm
 
 Automação, integrações e IA aplicada a rotinas contábeis e fiscais.
-**Menos trabalho manual. Mais controle da operação.**
 
 Construo sistemas que leem os documentos que a equipe já produz (PDF, Excel, CSV, TXT, XML), conectam
 sistemas que não conversam entre si e conferem cada etapa. O trabalho repetitivo sai das mãos das pessoas
@@ -99,4 +98,4 @@ de clientes.
 
 ---
 
-Tem uma rotina que se repete e trava? **[Conte qual é](https://savez-portfolio.vercel.app/contato)**.
+Contato: **[savez-portfolio.vercel.app/contato](https://savez-portfolio.vercel.app/contato)** · [LinkedIn](https://www.linkedin.com/in/max-william-minetto-79b404424/)
